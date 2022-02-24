@@ -47,3 +47,17 @@ services:
     networks:
       - internal
       - web
+
+  mail-server:
+    image: registry.cedricmarinot.fr/botkirial/mail-server
+    container_name: mail-server
+    restart: unless-stopped
+    labels:
+      - traefik.http.routers.mail-server.rule=Host(`mail-server.cedricmarinot.fr`)
+      - traefik.http.routers.mail-server.tls=true
+      - traefik.http.routers.mail-server.tls.certresolver=lets-encrypt
+      - traefik.port=80
+      - traefik.http.services.mail-server.loadbalancer.server.port=8080
+    networks:
+      - internal
+      - web
