@@ -26,9 +26,9 @@ services:
     container_name: marvin
     restart: unless-stopped
     labels:
-      - traefik.http.routers.portfolio.rule=Host(`marvin.cedricmarinot.fr`)
-      - traefik.http.routers.portfolio.tls=true
-      - traefik.http.routers.portfolio.tls.certresolver=lets-encrypt
+      - traefik.http.routers.marvin.rule=Host(`marvin.cedricmarinot.fr`)
+      - traefik.http.routers.marvin.tls=true
+      - traefik.http.routers.marvin.tls.certresolver=lets-encrypt
       - traefik.port=80
     networks:
       - internal
