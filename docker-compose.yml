@@ -20,6 +20,19 @@ services:
     networks:
       - internal
       - web
+      
+  marvin:
+    image: registry.cedricmarinot.fr/botkirial/marvin
+    container_name: marvin
+    restart: unless-stopped
+    labels:
+      - traefik.http.routers.portfolio.rule=Host(`marvin.cedricmarinot.fr`)
+      - traefik.http.routers.portfolio.tls=true
+      - traefik.http.routers.portfolio.tls.certresolver=lets-encrypt
+      - traefik.port=80
+    networks:
+      - internal
+      - web
 
  tethys:
     image: registry.cedricmarinot.fr/botkirial/tethys
