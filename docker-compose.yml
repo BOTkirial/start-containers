@@ -34,6 +34,19 @@ services:
       - internal
       - web
       
+  ascii:
+    image: registry.cedricmarinot.fr/botkirial/ascii
+    container_name: ascii
+    restart: unless-stopped
+    labels:
+      - traefik.http.routers.ascii.rule=Host(`ascii.cedricmarinot.fr`)
+      - traefik.http.routers.ascii.tls=true
+      - traefik.http.routers.ascii.tls.certresolver=lets-encrypt
+      - traefik.port=80
+    networks:
+      - internal
+      - web
+      
   tethys:
     image: registry.cedricmarinot.fr/botkirial/tethys
     container_name: tethys
