@@ -43,6 +43,7 @@ services:
       - traefik.http.routers.ascii.tls=true
       - traefik.http.routers.ascii.tls.certresolver=lets-encrypt
       - traefik.port=80
+      - traefik.http.services.ascii.loadbalancer.server.port=5555
     networks:
       - internal
       - web
